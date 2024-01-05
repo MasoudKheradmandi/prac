@@ -1,6 +1,6 @@
 from django.db import models
 # Create your models here.
-from ckeditor.fields import RichTextField
+
 from django.contrib.auth.models import User
 class Tag(models.Model):
     name = models.CharField(max_length=50)
@@ -20,7 +20,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=150)
     slug = models.SlugField(max_length=100, unique=True,null=True, allow_unicode=True)
     image = models.ImageField(upload_to='blog_images/', blank=True, null=True,)
-    content = RichTextField()
+    content =models.TextField()
     author = models.ForeignKey(User,on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag)
